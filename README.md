@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="Output SS/qvaultlogo whit.png"width="500" height="350">
+</p>
+
 # **QVault**
 #### This is a team project,  it was created as way for students to access the previous years papers with ease instead of solely depending on going to the library or getting hold of a seniors google drive with question papers.
 
