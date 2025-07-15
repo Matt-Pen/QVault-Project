@@ -9,8 +9,68 @@
 
 ## Screenshots
 
-### Login Form
+### Login Page
 
-<img src="" alt="login Form" width="825" height="500">
+<p align="center">
+  <img src="Output SS/Login-Page.jpg"width="800" height="500">
+</p>
+
+### Registration Page
+
+<p align="center">
+  <img src="Output SS/Register-Page.jpg"width="800" height="500">
+</p>
+
+### Forgot Password Page
+
+<p align="center">
+  <img src="Output SS/Reset-Password.jpg"width="800" height="500">
+</p>
 
 
+<p align="center">
+  <img src="Output SS/Reset-Pass-Confirm.jpg"width="800" height="500">
+</p>
+
+### Email
+
+<p align="center">
+  <img src="Output SS/Token-Email.jpg"width="300" height="700">
+</p>
+
+
+### Student Landing Page
+
+<p align="center">
+  <img src="Output SS/Student-Landing page.jpg"width="800" height="500">
+</p>
+
+### Student QS View Page
+
+<p align="center">
+  <img src="Output SS/QS-Vault.jpg"width="800" height="500">
+</p>
+
+### Teacher Landing Page
+
+<p align="center">
+  <img src="Output SS/Faculty-Landing_page.jpg"width="800" height="500">
+</p>
+
+### Upload QS Page
+
+<p align="center">
+  <img src="Output SS/Upload-QS.jpg"width="800" height="500">
+</p>
+
+### About Us Page
+
+<p align="center">
+  <img src="Output SS/About US.jpg"width="800" height="500">
+</p>
+
+### Contact Us Page
+
+<p align="center">
+  <img src="Output SS/Contact-Us.jpg"width="800" height="500">
+</p>
