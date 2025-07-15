@@ -1,0 +1,89 @@
+
+<div class="relative min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style="background-image: url('assets/Screenshot 2025-07-09 104719 (1).png')">
+  <div class="absolute top-16 w-80 h-8 bg-gradient-to-b from-white/20 to-transparent rounded-full blur-lg"></div>
+
+  <!-- Dark blue glass morphism -->
+  <div class="max-w-md w-full bg-[#0a0f2c]/60 backdrop-blur-lg p-10 rounded-2xl border border-blue-100/70 relative z-10 soft-white-shadow">
+    <h2 class="text-3xl font-inter tracking-wide text-white text-center">Register with QVault</h2>
+    <p class="text-sm text-gray-300 mt-1 mb-8 text-center">Set up your QVault account</p>
+
+    <div
+  *ngIf="showMessage"
+  [ngClass]="{
+    'bg-green-100 text-green-800 border-green-300': messageType === 'success',
+    'bg-red-100 text-red-800 border-red-300': messageType === 'error'
+  }"
+  class="p-3 rounded border mb-5 text-sm text-center transition duration-300 ease-in-out"
+>
+  {{ message }}
+</div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-5">
+
+      <!-- Email -->
+      <div>
+        <label class="block mb-2 text-sm font-medium text-gray-300">Email</label>
+        <input type="email" formControlName="email"
+          class="w-full p-3 rounded-xl bg-blue-900/20 border border-blue-100/20 text-white placeholder-gray-400 focus:ring-1 focus:ring-white focus:outline-none backdrop-blur-sm"
+          placeholder="Enter your email" />
+        <div *ngIf="(registerForm.get('email')?.touched && registerForm.get('email')?.errors) || (submitted && registerForm.get('email')?.errors)" class="text-red-400 text-xs mt-1">
+          <span *ngIf="registerForm.get('email')?.errors?.['required']">Email is required.</span>
+          <span *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email format.</span>
+          <span *ngIf="registerForm.get('email')?.errors?.['invalidDomain']">Email must end with @kristujayanti.com</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="relative">
+        <label class="block mb-2 text-sm font-medium text-gray-300">Password</label>
+        <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+          class="w-full p-3 pr-10 rounded-xl bg-blue-900/20 border border-blue-100/20 text-white placeholder-gray-400 focus:ring-1 focus:ring-white focus:outline-none backdrop-blur-sm"
+          placeholder="Enter your password" />
+       <button type="button" (click)="togglePasswordVisibility()" class="absolute top-10 right-3 text-black text-lg focus:outline-none">
+
+          <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-7-10-7a17.8 17.8 0 014.308-4.884M20.487 20.487L3.515 3.515m10.101 6.772a3 3 0 104.242 4.242"/>
+          </svg>
+          <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </button>
+        <div *ngIf="(registerForm.get('password')?.touched && registerForm.get('password')?.errors) || (submitted && registerForm.get('password')?.errors)" class="text-red-400 text-xs mt-1">
+          <span *ngIf="registerForm.get('password')?.errors?.['required']">Password is required.</span>
+          <span *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</span>
+          <span *ngIf="registerForm.get('password')?.errors?.['weakPassword']">Password must include uppercase, lowercase, and special character.</span>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="relative">
+        <label class="block mb-2 text-sm font-medium text-gray-300">Confirm Password</label>
+        <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword"
+          class="w-full p-3 pr-10 rounded-xl bg-blue-900/20 border border-blue-100/20 text-white placeholder-gray-400 focus:ring-1 focus:ring-white focus:outline-none backdrop-blur-sm"
+          placeholder="Confirm your password" />
+       <button type="button" (click)="toggleConfirmPasswordVisibility()" class="absolute top-10 right-3 text-black text-lg focus:outline-none">
+
+          <svg *ngIf="!showConfirmPassword" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-7-10-7a17.8 17.8 0 014.308-4.884M20.487 20.487L3.515 3.515m10.101 6.772a3 3 0 104.242 4.242"/>
+          </svg>
+          <svg *ngIf="showConfirmPassword" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </button>
+        <div *ngIf="(registerForm.get('confirmPassword')?.touched && (registerForm.get('confirmPassword')?.errors || registerForm.errors?.['passwordMismatch'])) || (submitted && (registerForm.get('confirmPassword')?.errors || registerForm.errors?.['passwordMismatch']))" class="text-red-400 text-xs mt-1">
+          <span *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</span>
+          <span *ngIf="registerForm.errors?.['passwordMismatch']">Passwords do not match.</span>
+        </div>
+      </div>
+
+      <div *ngIf="errorMessage" class="text-red-400 text-xs mt-1 text-center">{{ errorMessage }}</div>
+
+      <button type="submit"
+        class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-semibold tracking-wide shadow-lg transition">
+        Create Account
+      </button>
+    </form>
+  </div>
+</div>
